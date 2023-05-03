@@ -2,6 +2,8 @@ stages:
   - test
 
 test_app:
+  tags:
+   - python3
   image: python:latest
   stage: test
   before_script:
