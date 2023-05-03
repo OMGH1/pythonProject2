@@ -3,7 +3,7 @@ stages:
 
 test_app:
   tags:
-   - python3
+   - python
   image: python:latest
   stage: test
   before_script:
