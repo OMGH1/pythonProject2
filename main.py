@@ -49,4 +49,4 @@ api.add_resource(ExecuterAuditFlask, '/ExecuterAuditFlask/<querystring>/<id_proj
 api.add_resource(ObtenirRapportFlask, '/ObtenirRapportFlask/<querystring>/<id_projet>')  # Route_4
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4999)
+    app.run(host='127.0.0.1', port=4999)
