@@ -1,4 +1,9 @@
 import requests
+import time
+import random
+from prometheus_client import Summary, start_http_server
+
+REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
 
 class StartingNewProjet:
     def __init__(self, querystring, payload):
@@ -17,6 +22,7 @@ class StartingNewProjet:
         self.payload = payload
         self.headers = {'content-type': "application/json", 'cache-control': "no-cache"}
 
+    @REQUEST_TIME.time()
     def run(self):
         return {'------>  StartingNewProjet output  <-----': "capsssssssss"}
         # return requests.request('POST', self.url, data=self.payload, headers=self.headers, params=self.querystring)
