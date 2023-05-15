@@ -4,7 +4,9 @@ flask.helpers._endpoint_from_view_func = flask.scaffold._endpoint_from_view_func
 from flask import Flask
 from flask_restful import Resource, Api
 from flask_jsonpify import jsonify
-
+from prometheus_client import start_http_server, Summary
+import random
+import time
 
 app = Flask(__name__)
 api = Api(app)
@@ -37,7 +39,6 @@ class ObtenirRapportFlask(Resource):
         start = obtenir.run()
         return jsonify(start)
 
-
 @app.route('/')
 def home():
     return "SEMRUSH API RUNNING ..."
@@ -49,4 +50,5 @@ api.add_resource(ExecuterAuditFlask, '/ExecuterAuditFlask/<querystring>/<id_proj
 api.add_resource(ObtenirRapportFlask, '/ObtenirRapportFlask/<querystring>/<id_projet>')  # Route_4
 
 if __name__ == '__main__':
+    start_http_server(8000)
     app.run(host='127.0.0.1', port=4999)
